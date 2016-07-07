@@ -1,0 +1,12 @@
+
+Setting up the CMC, initially class not found exception returned after attempted unattended test execution.
+Customisation items need to be aded to the following folder.
+
+
+C:\Documents and Settings\All Users\Application Data\IBM\RFT\customization
+
+
+Currently (October 2015) custom classes are Joda(3) under Program Files Folder.
+
+
+Dave.

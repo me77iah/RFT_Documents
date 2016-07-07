@@ -1,0 +1,19 @@
+Requirements for Unattended Regression Test Executions.
+
+1) Batch file to fire off RFT Unattended Test Script
+2) Applett to keep CLIENT Awake - 'Dont_Sleep' Available from the Client RFT Parent Folder
+3) No Instance of RFT (Or Anything Else) On Desktop prior to unatttended executions
+4) UAC (User Account Control) Settings set to Minimum
+5) Scheduled Task to fire off the batch file in 1), above, at the predetermined date and time
+
+
+Other Comments.
+
+Good practice to reebot system, then go through the above checklist on restart.
+Turn off the MONITOR ('Don't Sleep') convinces RFT that the monitor is on :-)
+
+Daily reboots occur on the prelive environments, around midnight.
+Saturday evenings at 10PM. Something major happens, sytems go down, and can be offline for a considerable time (monday AM)?
+
+Have Been Monitoring PL1 Uptime from DKT926105
+

@@ -1,0 +1,24 @@
+
+EXTERNALLY (Not using RFT)
+
+Navigate to the 'rational_ft_log.html' within the results set and double click. 
+--------------------
+eg.
+
+V:\Automated_Testing\RFT\Unattended_Executions\Results ....
+
+Select a folder of results to view ....
+
+Overnight_Regression_Testing_DDMMYY_HHMM_DKTnnnnnn.
+
+eg. Overnight_Regression_Testing_301015_0945_DKT926204
+--------------------
+With RFT
+
+Navigate Project (LH) Treeview LOGS, double click on required log from treeview
+
+--------------------
+
+
+
+

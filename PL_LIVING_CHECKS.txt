@@ -1,0 +1,205 @@
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.UnsupportedFlavorException;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Properties;
+
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+//import java.io.IOException;
+//import java.nio.file.Files;
+//import java.nio.file.Path;
+//import java.nio.file.Paths;
+//import java.nio.file.StandardCopyOption;
+
+import java.io.File; 
+import java.io.FileInputStream; 
+import java.io.FileOutputStream; 
+import java.io.IOException; 
+import java.io.InputStream;  
+import java.io.OutputStream; 
+import java.nio.channels.FileChannel;  
+import java.nio.file.Files;  
+import org.apache.*;
+
+
+
+
+
+
+import resources.Common_Variables;
+import resources.DebugHelper;
+import Utilities.Joda_Date_Selection_Variant;
+import Utilities.Portal_Synchronisation;
+//import resources.Utilities.Date_SelectionHelper;
+import com.rational.test.ft.*;
+import com.rational.test.ft.domain.flex.FlexTestDomainImplementation.GetChildAtPointRunnable;
+import com.rational.test.ft.enabler.Browser;
+import com.rational.test.ft.object.interfaces.*;
+import com.rational.test.ft.object.interfaces.SAP.*;
+import com.rational.test.ft.object.interfaces.WPF.*;
+import com.rational.test.ft.object.interfaces.dojo.*;
+import com.rational.test.ft.object.interfaces.siebel.*;
+import com.rational.test.ft.object.interfaces.flex.*;
+import com.rational.test.ft.object.interfaces.generichtmlsubdomain.*;
+import com.rational.test.ft.script.*;
+import com.rational.test.ft.value.*;
+import com.rational.test.ft.vp.*;
+import com.ibm.rational.test.ft.object.interfaces.sapwebportal.*;
+/**
+ * Description   : Functional Test Script
+ * @author horned
+ */
+public class Debug extends DebugHelper
+{
+	/**
+	 * Script Name   : <b>Debug</b>
+	 * Generated     : <b>25 Nov 2014 10:45:29</b>
+	 * Description   : Functional Test Script
+	 * Original Host : WinNT Version 5.1  Build 2600 (S)
+	 * 
+	 * @since  2014/11/25
+	 * @author horned
+	 */
+	
+	
+//	public static boolean liveTest;
+//	public static String[] environmentURL = new String[1];
+//
+//	public static Integer iLT95;
+//	public static Integer iGT95LT11499;
+//	public static Integer iGT115LT14499;
+//	public static Integer iGT145;
+//	public static Integer iActual;
+
+	
+	
+	public void testMain(Object[] args) 
+	{
+		
+		
+//	    Properties props = new Properties();
+//	    props.put("mail.smtp.host", "my-mail-server");
+//	    Session session = Session.getInstance(props, null);
+//
+//	    try {
+//	        MimeMessage msg = new MimeMessage(session);
+//	        msg.setFrom("me@example.com");
+//	        msg.setRecipients(Message.RecipientType.TO,
+//	                          "you@example.com");
+//	        msg.setSubject("JavaMail hello world example");
+//	        msg.setSentDate(new Date());
+//	        msg.setText("Hello, world!\n");
+//	        Transport.send(msg, "me@example.com", "my-password");
+//	    } catch (MessagingException mex) {
+//	        System.out.println("send failed, exception: " + mex);
+//	    }
+
+
+		
+		// Checking Outside Working Hours UPTIME of PL1
+		
+		// Driven every 30 Minutes By OLD CRONE
+		
+		String sIteration_Result = "";
+		String sIteration_Comment = "";
+		
+		CloseAllBrowsers();
+		
+		try {
+			startBrowser("Internet Explorer", "https://prelive1.theaa.com/breakdown-cover/");
+			
+			sleep(25);
+			
+			//link_buyBreakdownCover3().performTest(BuyBreakdownCover_textVP(), 2.0, 20.0);
+			link_breakdownCover().performTest( BreakdownCover_textVP(), 2.0, 20.0 );
+			
+			
+			// write PASS Detail to unattended.txt file
+			sIteration_Result = "Success";
+			sIteration_Comment = "Prelive1 is WORKING, Breakdown Page is RETURNING as Expected :-)!";
+			
+		} catch (Exception e) {
+			
+			// write FAILURE Detail to unattended.txt file
+			sIteration_Result = "FAILED";
+			sIteration_Comment = "Prelive1 is NON RESPONSIVE - LOOK AT DETAIL LOGS FOR REASON! :-(";
+			
+		}
+
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
+        // w.append(dateFormat.format(date)+'\n');
+        //w.append(sIteration_Result+'\n');
+
+  	
+        try {
+			FileWriter writer = new FileWriter("C:\\unattended.txt", true);
+
+			
+			
+			BufferedWriter bufferedWriter = new BufferedWriter(writer);
+			bufferedWriter.write("------------- DKT926105 -------------");
+			bufferedWriter.newLine();
+			bufferedWriter.write("Date and Time "+(dateFormat.format(date)+'\n'));
+			bufferedWriter.newLine();
+			bufferedWriter.write("Iteration Result "+sIteration_Result+'\n');
+			bufferedWriter.newLine();
+			bufferedWriter.write("Iteration Comment "+sIteration_Comment+'\n');
+			bufferedWriter.newLine();
+			bufferedWriter.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			// e.printStackTrace();
+			// System.out.print("Error Adding Row to unattended.txt file");
+		}
+
+		//-----------------------------------------------------------
+		// Make BackUp :-)
+		//-----------------------------------------------------------
+
+        sleep(10);
+        
+		//java nio file copy example
+		Path source = Paths.get("C:\\unattended.txt");
+		
+		// Daves Folder
+	       sleep(10);
+
+	       Path target = Paths.get("P:\\unattended.txt");
+		try {
+			//replace existing file using java nio package
+			System.out.println(Files.copy(source, target, StandardCopyOption.REPLACE_EXISTING));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		//-----------------------------------------------------------
+
+		
+		// Close IE
+		iE(document_breakdownCoverInsuran(),DEFAULT_FLAGS).close();
+		
+		// Copy 
+	      sleep(10);
+
+		//-----------------------------------------------------------
+	
+	}
+}
+
+
